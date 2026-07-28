@@ -125,7 +125,7 @@ const pricingFeatures = [
   'Design - Default/Eigenes/Neues',
   'CI/CD - Default/Eigenes/Neues',
   'Bildergalerie - Lightbox',
-  'Videos - ???',
+  'Videos - iframe',
   'Newsfeed',
   'Kontaktformular',
   'M365 Business',
