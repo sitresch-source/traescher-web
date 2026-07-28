@@ -273,7 +273,7 @@ const packages = [
 // unter dem "Wer sind wir"-Textblock. src später durch echtes Foto ersetzen.
 const aboutPhoto = {
   id: 'about-simon',
-  src: '/src/assets/Simon Tresch.jpg',
+  src: '/simon-tresch.jpg',
   alt: 'Simon Tresch, traescher web',
   caption: 'Simon Tresch – traescher web',
 }
