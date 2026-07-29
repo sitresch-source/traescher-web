@@ -556,8 +556,8 @@ export default function App() {
             Schreiben Sie uns kurz, worum es geht – wir melden uns innerhalb von
             zwei Werktagen.
           </p>
-          <a className="cta cta-outline" href="mailto:hallo@traescher-web.ch">
-            hallo@traescher-web.ch
+          <a className="cta cta-outline" href="mailto:simon.tresch@traescher-web.com?subject=Projektanfrage%20traescher%20web">
+			simon.tresch@traescher-web.com
           </a>
         </Reveal>
       </main>
