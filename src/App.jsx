@@ -557,7 +557,7 @@ export default function App() {
             zwei Werktagen.
           </p>
           <a className="cta cta-outline" href="mailto:simon.tresch@traescher-web.com?subject=Projektanfrage%20traescher%20web">
-			simon.tresch@traescher-web.com
+			hallo@traescher-web.com
           </a>
         </Reveal>
       </main>
