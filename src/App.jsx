@@ -345,6 +345,7 @@ function Lightbox({ items, index, onClose, onPrev, onNext }) {
 
 export default function App() {
   const [lightbox, setLightbox] = useState(null) // { items, index } | null
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const openLightbox = (items, index) => setLightbox({ items, index })
   const closeLightbox = () => setLightbox(null)
@@ -357,20 +358,44 @@ export default function App() {
       lb ? { ...lb, index: lb.index === lb.items.length - 1 ? 0 : lb.index + 1 } : lb
     )
 
+  const closeMenu = () => setMenuOpen(false)
+
+  // Menü per Escape schliessen (gleiches Muster wie die Lightbox).
+  useEffect(() => {
+    if (!menuOpen) return
+    function handleKey(e) {
+      if (e.key === 'Escape') closeMenu()
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [menuOpen])
+
   return (
     <div className="page">
       <header className="site-header">
-        <a href="#top" className="wordmark">traescher web</a>
-        <nav className="nav">
-          <a href="#leistungen">Leistungen</a>
-          <a href="#angebot">Angebot</a>
-          <a href="#referenzen">Referenzen</a>
-          <a href="#prozess">Prozess</a>
-          <a href="#warum">Warum wir</a>
-		  <a href="#wir">Wer sind wir</a>
-          <a href="#kontakt">Kontakt</a>
+        <button
+          className={`menu-toggle ${menuOpen ? 'is-open' : ''}`}
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-expanded={menuOpen}
+          aria-controls="site-nav"
+          aria-label={menuOpen ? 'Menü schliessen' : 'Menü öffnen'}
+        >
+          <span className="menu-toggle-bar" />
+          <span className="menu-toggle-bar" />
+          <span className="menu-toggle-bar" />
+        </button>
+        <a href="#top" className="wordmark" onClick={closeMenu}>traescher web</a>
+        <nav id="site-nav" className={`nav-flyout ${menuOpen ? 'is-open' : ''}`}>
+          <a href="#leistungen" onClick={closeMenu}>Leistungen</a>
+          <a href="#angebot" onClick={closeMenu}>Angebot</a>
+          <a href="#referenzen" onClick={closeMenu}>Referenzen</a>
+          <a href="#prozess" onClick={closeMenu}>Prozess</a>
+          <a href="#warum" onClick={closeMenu}>Warum wir</a>
+          <a href="#wir" onClick={closeMenu}>Wer sind wir</a>
+          <a href="#kontakt" onClick={closeMenu}>Kontakt</a>
         </nav>
       </header>
+      {menuOpen && <div className="nav-backdrop" onClick={closeMenu} />}
 
       <main id="top">
         <section className="hero">
