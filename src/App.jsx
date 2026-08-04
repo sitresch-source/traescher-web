@@ -1,40 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
-// Kreis-Siegel: das Signatur-Element der Seite, angelehnt an
-// Vereins-/Firmenstempel auf offiziellen Dokumenten.
-function Seal({ size = 168, className = '' }) {
-  const id = 'seal-path'
-  return (
-    <svg
-      className={`seal ${className}`}
-      width={size}
-      height={size}
-      viewBox="0 0 200 200"
-      role="img"
-      aria-label="Siegel: traescher web, seit 2026, Zürich"
-    >
-      <defs>
-        <path
-          id={id}
-          d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"
-        />
-      </defs>
-      <circle cx="100" cy="100" r="94" fill="none" stroke="currentColor" strokeWidth="1" />
-      <circle cx="100" cy="100" r="68" fill="none" stroke="currentColor" strokeWidth="1" />
-      <text fill="currentColor" fontSize="11.5" letterSpacing="3" fontFamily="'IBM Plex Mono', monospace">
-        <textPath href={`#${id}`} startOffset="0%">
-          TRAESCHER WEB · KMU &amp; VEREINE · SEIT 2026 ·
-        </textPath>
-      </text>
-      <g transform="translate(100,100)" stroke="currentColor" strokeWidth="1" fill="none">
-        <path d="M -22,-6 L 0,16 L 22,-6" />
-        <line x1="0" y1="16" x2="0" y2="-20" />
-      </g>
-    </svg>
-  )
-}
-
 // Kleiner Hook: blendet Sektionen sanft ein, sobald sie in den
 // Viewport scrollen. Respektiert prefers-reduced-motion via CSS.
 function useReveal() {
@@ -384,7 +350,9 @@ export default function App() {
           <span className="menu-toggle-bar" />
           <span className="menu-toggle-bar" />
         </button>
-        <a href="#top" className="wordmark" onClick={closeMenu}>traescher web</a>
+        <a href="#top" className="wordmark" onClick={closeMenu}>
+          <img src="/header-logo.png" alt="traescher web" className="wordmark-logo" />
+        </a>
         <nav id="site-nav" className={`nav-flyout ${menuOpen ? 'is-open' : ''}`}>
           <a href="#leistungen" onClick={closeMenu}>Leistungen</a>
           <a href="#angebot" onClick={closeMenu}>Angebot</a>
@@ -411,7 +379,7 @@ export default function App() {
             <a className="cta" href="#kontakt">Projekt anfragen</a>
           </div>
           <div className="hero-seal" aria-hidden="false">
-            <Seal size={190} />
+            <img src="/logo.png" alt="traescher web Logo" className="logo-image logo-image-hero" />
           </div>
         </section>
 
@@ -588,7 +556,7 @@ export default function App() {
       </main>
 
       <footer className="site-footer">
-        <Seal size={64} className="seal-small" />
+        <img src="/logo.png" alt="traescher web Logo" className="logo-image logo-image-footer" />
         <p>© 2026 traescher web · Switzerland</p>
       </footer>
 
