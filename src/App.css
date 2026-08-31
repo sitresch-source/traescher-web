@@ -446,6 +446,16 @@
   margin: 0;
 }
 
+.footer-legal a {
+  color: var(--steel);
+  text-decoration: none;
+}
+
+.footer-legal a:hover,
+.footer-legal a:focus-visible {
+  color: var(--ink);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 760px) {
@@ -746,6 +756,67 @@
   .lightbox-nav {
     font-size: 2.25rem;
   }
+}
+
+/* ---------- Rechtliches (Impressum / Datenschutz) ---------- */
+
+.legal-main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 4rem) 4rem;
+}
+
+.legal-main h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.legal-updated {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--steel);
+  margin: 0 0 2.5rem;
+}
+
+.legal-block h2 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin: 2.25rem 0 0.6rem;
+}
+
+.legal-block p {
+  color: var(--charcoal);
+  line-height: 1.65;
+  margin: 0.4rem 0;
+}
+
+.legal-block a {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.legal-back {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--mist);
+}
+
+.legal-back a {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--charcoal);
+  text-decoration: none;
+}
+
+.legal-back a:hover,
+.legal-back a:focus-visible {
+  color: var(--ink);
 }
 
 /* ---------- Focus visibility ---------- */

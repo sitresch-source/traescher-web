@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
-import SiteHeader from "./components/SiteHeader";
 
 // Kleiner Hook: blendet Sektionen sanft ein, sobald sie in den
 // Viewport scrollen. Respektiert prefers-reduced-motion via CSS.
@@ -313,10 +311,9 @@ function Lightbox({ items, index, onClose, onPrev, onNext }) {
   )
 }
 
-// Die komplette bisherige Startseite - unverändert, nur umbenannt von
-// "App" zu "Home", damit sie als eigene Route eingebunden werden kann.
-function Home() {
+export default function App() {
   const [lightbox, setLightbox] = useState(null) // { items, index } | null
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const openLightbox = (items, index) => setLightbox({ items, index })
   const closeLightbox = () => setLightbox(null)
@@ -329,9 +326,46 @@ function Home() {
       lb ? { ...lb, index: lb.index === lb.items.length - 1 ? 0 : lb.index + 1 } : lb
     )
 
+  const closeMenu = () => setMenuOpen(false)
+
+  // Menü per Escape schliessen (gleiches Muster wie die Lightbox).
+  useEffect(() => {
+    if (!menuOpen) return
+    function handleKey(e) {
+      if (e.key === 'Escape') closeMenu()
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [menuOpen])
+
   return (
     <div className="page">
-      <SiteHeader base="" />
+      <header className="site-header">
+        <button
+          className={`menu-toggle ${menuOpen ? 'is-open' : ''}`}
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-expanded={menuOpen}
+          aria-controls="site-nav"
+          aria-label={menuOpen ? 'Menü schliessen' : 'Menü öffnen'}
+        >
+          <span className="menu-toggle-bar" />
+          <span className="menu-toggle-bar" />
+          <span className="menu-toggle-bar" />
+        </button>
+        <a href="#top" className="wordmark" onClick={closeMenu}>
+          <img src="/header-logo.png" alt="traescher web" className="wordmark-logo" />
+        </a>
+        <nav id="site-nav" className={`nav-flyout ${menuOpen ? 'is-open' : ''}`}>
+          <a href="#leistungen" onClick={closeMenu}>Leistungen</a>
+          <a href="#angebot" onClick={closeMenu}>Angebot</a>
+          <a href="#referenzen" onClick={closeMenu}>Referenzen</a>
+          <a href="#prozess" onClick={closeMenu}>Prozess</a>
+          <a href="#warum" onClick={closeMenu}>Warum wir</a>
+          <a href="#wir" onClick={closeMenu}>Wer sind wir</a>
+          <a href="#kontakt" onClick={closeMenu}>Kontakt</a>
+        </nav>
+      </header>
+      {menuOpen && <div className="nav-backdrop" onClick={closeMenu} />}
 
       <main id="top">
         <section className="hero">
@@ -523,12 +557,13 @@ function Home() {
         </Reveal>
       </main>
 
+		// innerhalb deiner <Routes>:
+		<Route path="/impressum" element={<Impressum />} />
+		<Route path="/datenschutz" element={<Datenschutz />} />
+
       <footer className="site-footer">
         <img src="/logo.png" alt="traescher web Logo" className="logo-image logo-image-footer" />
         <p>© 2026 traescher web · Switzerland</p>
-        <p className="footer-legal">
-          <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
-        </p>
       </footer>
 
       <Lightbox
@@ -539,17 +574,5 @@ function Home() {
         onNext={nextImage}
       />
     </div>
-  )
-}
-
-// App kümmert sich nur noch ums Routing: "/" zeigt die bisherige
-// Startseite (Home), "/impressum" und "/datenschutz" die neuen Seiten.
-export default function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/impressum" element={<Impressum />} />
-      <Route path="/datenschutz" element={<Datenschutz />} />
-    </Routes>
   )
 }
