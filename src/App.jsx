@@ -252,7 +252,7 @@ const aboutPhoto = {
 // direkt im Partner-Textblock. src später durch echtes Foto ersetzen.
 const partnerPhoto = {
   id: 'partner-ramona',
-  src: 'https://picsum.photos/seed/traescher-ramona/700/700',
+  src: '/partner_silhouette.png',
   alt: 'Ramona Gisler, Partnerin Gestaltung & CI/CD',
   caption: 'Ramona Gisler – Gestaltung, Grafik & CI/CD',
 }
@@ -260,12 +260,12 @@ const partnerPhoto = {
 // Platzhalter-Referenzen. Bilder + Bildunterschriften: sobald echte
 // Projekte vorliegen, hier einfach src/alt/caption ersetzen.
 const gallery = [
-  { id: 'g1', src: 'https://picsum.photos/seed/traescher-01/800/600', alt: 'Referenzprojekt Beispiel 1', caption: 'KMU-Website – Handwerksbetrieb' },
-  { id: 'g2', src: 'https://picsum.photos/seed/traescher-02/800/600', alt: 'Referenzprojekt Beispiel 2', caption: 'Vereinswebseite – Sportklub' },
-  { id: 'g3', src: 'https://picsum.photos/seed/traescher-03/800/600', alt: 'Referenzprojekt Beispiel 3', caption: 'KMU-Website – Ladengeschäft' },
-  { id: 'g4', src: 'https://picsum.photos/seed/traescher-04/800/600', alt: 'Referenzprojekt Beispiel 4', caption: 'Vereinswebseite – Kulturverein' },
-  { id: 'g5', src: 'https://picsum.photos/seed/traescher-05/800/600', alt: 'Referenzprojekt Beispiel 5', caption: 'KMU-Website – Beratung' },
-  { id: 'g6', src: 'https://picsum.photos/seed/traescher-06/800/600', alt: 'Referenzprojekt Beispiel 6', caption: 'Vereinswebseite – Musikverein' },
+  { id: 'g1', src: '/referenzen/01_webdesign.jpg', alt: 'Referenzprojekt Webdesign', caption: 'Webdesign' },
+  { id: 'g2', src: '/referenzen/02_ki_gehirn.jpg', alt: 'Referenzprojekt KI', caption: 'Künstliche Intelligenz' },
+  { id: 'g3', src: '/referenzen/03_netzwerk.jpg', alt: 'Referenzprojekt Netzwerk', caption: 'Netzwerk' },
+  { id: 'g4', src: '/referenzen/04_ui_wireframes.jpg', alt: 'Referenzprojekt UI Wireframes', caption: 'UI & Wireframes' },
+  { id: 'g5', src: '/referenzen/05_web_code.jpg', alt: 'Referenzprojekt Web-Code', caption: 'Web-Code' },
+  { id: 'g6', src: '/referenzen/06_ki_robotik.jpg', alt: 'Referenzprojekt Robotik', caption: 'Robotik' },
 ]
 
 // Lightbox: vergrösserte Ansicht mit Tastatur- und Klick-Navigation.
