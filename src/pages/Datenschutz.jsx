@@ -13,7 +13,7 @@ export default function Datenschutz() {
 
         <div className="legal-block">
           <h2>Verantwortliche Stelle</h2>
-          <p>Simon Tresch, Traescher Web (since 2026), eine Traesch Group Firma</p>
+          <p>Simon Tresch, traescher web (since 2026), eine traescher Group Firma</p>
           <p>Wyden 8, 6462 Seedorf, UR, Schweiz</p>
           <p>
             <a href="mailto:simon.tresch@traescher-web.com">
