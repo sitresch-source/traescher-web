@@ -12,8 +12,8 @@ export default function Impressum() {
 
         <div className="legal-block">
           <h2>Anbieter</h2>
-          <p>Traescher Web (since 2026)</p>
-          <p>eine Traesch Group Firma</p>
+          <p>traescher web (since 2026)</p>
+          <p>eine traescher Group Firma</p>
 
           <h2>Verantwortlich</h2>
           <p>Simon Tresch</p>
